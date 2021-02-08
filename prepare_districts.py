@@ -15,7 +15,7 @@ districts = pd.read_csv(
 #using an MD5 hash as a unique identifier (much better than full address)
 
 print("Before:", len(districts.index))
-districts_u = districts.drop(columns=["obw", "Duda", "Trzaskowski"])
+districts_u = districts.drop(columns=["obw", "Duda", "Trzaskowski", "type"])
 districts_u = districts_u.drop_duplicates(subset=["full_name"], keep="first")
 districts_u["lat"] = [0] * len(districts_u.index)
 districts_u["lng"] = [0] * len(districts_u.index)
