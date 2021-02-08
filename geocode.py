@@ -5,7 +5,7 @@ import os
 
 def save(df: pd.DataFrame, index: int):
   print("Saving data...")
-  df.to_csv("geocode/geo_districts.csv", encoding="utf-8")
+  df.to_csv("geocode/geo_districts.csv", encoding="utf-8", index=False, sep=";")
   with open("geocode/last_index.txt", "w") as f:
     f.write(str(index))
   print("Data saved.")
@@ -15,7 +15,7 @@ params = {"key": api_key, "language": "pl"}
 
 #This was made to load data after exception as I didn't want to overwrite the original file
 #If the sript is being run for the first time it should point to data/districts_u.csv instead
-all_districts = pd.read_csv("geocode/geo_districts.csv", encoding="utf-8", na_filter=False)
+all_districts = pd.read_csv("data/districts_u.csv", encoding="utf-8", na_filter=False, sep=";")
 
 with open("geocode/many_results.txt", "w") as f:
   f.write("")
